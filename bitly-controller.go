@@ -1,8 +1,6 @@
-package controllers
+package bitly
 
 import (
- 	 "../models"
- 	 "../utility"
 	"net/http"
   	"net/url"
 	"fmt"
@@ -53,15 +51,15 @@ func (b * BitlyRoute) GetHistory(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		e := Error{StatusCode: 500, Message: "Oops! - please look at the GetHistory controller"}
 		log.Fatal("Do: ", err)
-		utility.RespondWithJson(w, http.StatusCreated, e)
+		RespondWithJson(w, http.StatusCreated, e)
 		return
 	}
 	defer resp.Body.Close()
-	var history models.HistoryModel
+	var history HistoryModel
 	if err := json.NewDecoder (resp.Body).Decode(&history); err != nil {
 		log.Println(err)
 	}
-	utility.RespondWithJson(w, http.StatusCreated, history)
+	RespondWithJson(w, http.StatusCreated, history)
 }
 
 func (b * BitlyRoute) SaveLink(w http.ResponseWriter, r *http.Request){
@@ -82,17 +80,17 @@ func (b * BitlyRoute) SaveLink(w http.ResponseWriter, r *http.Request){
 	if err != nil {
 		e := Error{StatusCode: 500, Message: "Oops! - please look at the GetHistory controller"}
 		log.Fatal("Do: ", err)
-		utility.RespondWithJson(w, http.StatusCreated, e)
+		RespondWithJson(w, http.StatusCreated, e)
 		return
 	}
 	defer resp.Body.Close()
-	var savedLink models.LinkModel
+	var savedLink LinkModel
 
 	if err := json.NewDecoder (resp.Body).Decode(&savedLink); err != nil {
 		log.Println(err)
 	}
 
-	utility.RespondWithJson(w, http.StatusCreated, savedLink)
+	RespondWithJson(w, http.StatusCreated, savedLink)
 }
 
 func (b * BitlyRoute) UserClicks(w http.ResponseWriter, r *http.Request){
@@ -101,17 +99,17 @@ func (b * BitlyRoute) UserClicks(w http.ResponseWriter, r *http.Request){
 	if err != nil {
 		e := Error{StatusCode: 500, Message: "Oops! - please look at the UserClicks controller"}
 		log.Fatal("Do: ", err)
-		utility.RespondWithJson(w, http.StatusCreated, e)
+		RespondWithJson(w, http.StatusCreated, e)
 		return
 	}
   	defer resp.Body.Close()
-  	var clicks models.ClickModel
+  	var clicks ClickModel
 
   	if err := json.NewDecoder (resp.Body).Decode(&clicks); err != nil {
     	log.Println(err)
   	}
 
-  	utility.RespondWithJson(w, http.StatusCreated, clicks)
+  	RespondWithJson(w, http.StatusCreated, clicks)
 
 }
 func (t * TwitterRoute) TweetAndBitly(w http.ResponseWriter, r *http.Request){
@@ -134,12 +132,12 @@ func (t * TwitterRoute) TweetAndBitly(w http.ResponseWriter, r *http.Request){
 	if err != nil {
 		e := Error{StatusCode: 500, Message: "Oops! - please look at the TweetAndBitly controller"}
 		log.Fatal("Do: ", err)
-		utility.RespondWithJson(w, http.StatusCreated, e)
+		RespondWithJson(w, http.StatusCreated, e)
 		return
 	}
 
 	defer bResp.Body.Close()
-	var savedLink models.LinkModel
+	var savedLink LinkModel
 	if err := json.NewDecoder (bResp.Body).Decode(&savedLink); err != nil {
 		log.Println(err)
 	}
@@ -163,7 +161,7 @@ func (t * TwitterRoute) TweetAndBitly(w http.ResponseWriter, r *http.Request){
 	if err != nil {
 		e := Error{StatusCode: 500, Message: "Oops! - please look at the TweetAndBitly controller"}
 		log.Fatal("Do: ", err)
-		utility.RespondWithJson(w, http.StatusCreated, e)
+		RespondWithJson(w, http.StatusCreated, e)
 	}
 	tweet := &twittergo.Tweet{}
 	err = tweetResp.Parse(tweet)
@@ -180,7 +178,7 @@ func (t * TwitterRoute) TweetAndBitly(w http.ResponseWriter, r *http.Request){
 				fmt.Printf("Error #%v - ", i + 1)
 				fmt.Printf("Code: %v ", val.Code())
 				fmt.Printf("Msg: %v\n", val.Message())
-				utility.RespondWithJson(w, http.StatusCreated, err)
+				RespondWithJson(w, http.StatusCreated, err)
 				return
 			}
 		} else {
@@ -189,16 +187,16 @@ func (t * TwitterRoute) TweetAndBitly(w http.ResponseWriter, r *http.Request){
 					Code: 500,
 					Message: "Problem parsing response",
 			}
-			utility.RespondWithJson(w, http.StatusCreated, err)
+			RespondWithJson(w, http.StatusCreated, err)
 			return
 		}
 		//os.Exit(1)
 	}
-	var tweetObject models.Tweet
+	var tweetObject Tweet
 	tweetObject.Id = tweet.Id()
 	tweetObject.Tweet = tweet.Text()
 	tweetObject.User = tweet.User().Name()
-	utility.RespondWithJson(w, http.StatusCreated, tweetObject)
+	RespondWithJson(w, http.StatusCreated, tweetObject)
 }
 
 /*

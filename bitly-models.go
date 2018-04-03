@@ -1,4 +1,4 @@
-package models
+package bitly
 
 /*
  * Model For Link History

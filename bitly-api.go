@@ -6,13 +6,11 @@ import (
 	"github.com/kurrik/oauth1a"
 	"net/http"
 	"log"
-	"./controllers"
 	"io/ioutil"
 	"strings"
 	"os"
 	"fmt"
 	"path/filepath"
-	"./utility"
 )
 
 func NewBitlyRouter(port string) *BitlyApi {
@@ -71,17 +69,17 @@ func(b *BitlyApi) Listen() {
 	Set Twitter and Bitly Routes.
  */
 
-func GetBitlyRoute(method string) (b *controllers.BitlyRoute){
-	return &controllers.BitlyRoute{
+func GetBitlyRoute(method string) (b *BitlyRoute){
+	return &BitlyRoute{
 		Scheme: "https",
 		Host: "api-ssl.bitly.com",
 		Method: method,
-		Token: utility.GetBitlyToken(),
+		Token: GetBitlyToken(),
 		Param: "" } //Param is empty for queries in the route.
 }
 
-func GetTweetRoute(method string) (t *controllers.TwitterRoute){
-	return &controllers.TwitterRoute{
+func GetTweetRoute(method string) (t *TwitterRoute){
+	return &TwitterRoute{
 		Scheme: "https",
 		Host: "api.twitter.com",
 		Method: method,
