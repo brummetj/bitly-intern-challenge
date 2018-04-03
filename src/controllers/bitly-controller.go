@@ -186,9 +186,11 @@ func (t * TwitterRoute) TweetAndBitly(w http.ResponseWriter, r *http.Request){
 		} else {
 			fmt.Printf("Problem parsing response: %v\n", err)
 			err := Error{
-					Code: 500
-					Message: "Problem parsing response: " + err
+					Code: 500,
+					Message: "Problem parsing response",
 			}
+			utility.RespondWithJson(w, http.StatusCreated, err)
+			return
 		}
 		//os.Exit(1)
 	}
