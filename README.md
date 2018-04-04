@@ -8,7 +8,7 @@ For your internship challenge, I developed a library that acts as both a Router 
 
 This library was built to make quick responses to twitter with bitly links.
 
-For example... Let us say someone uses Twitter as a marketing tool, and they have items they sell with URI's that you would describe as a 'Deep link'. This library API could make it so someone can quickly market their item as a Bitly link on their twitter account. This person can utilize all the valuable information you guys provide fast and easy with one HTTP request to their own endpoint!! :)
+For example... Let us say someone uses Twitter as a marketing tool, and they have items they sell with URI's that you would describe as a 'Deep link' or a 'Long Url'. This library API could make it so someone can quickly market their item as a Bitly link on their twitter account. This person can utilize all the valuable information you guys provide fast and easy with one HTTP request to their own endpoint!! :)
 
 If there is no URL present in the form value then it will simply just submit a tweet to your account. 
 
