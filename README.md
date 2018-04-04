@@ -306,3 +306,5 @@ With this API go wrapper you can quickly submit bitly links to twitter through t
 Thanks for giving me this opportunity with your summer internship. I hope you enjoy the Library I built for you. Feel free to dive into the source code and ask any questions if needed!
 
 Looking forward to be hearing from you soon. 
+
+![alt text](https://media.giphy.com/media/kUFlw7XaGE36w/giphy.gif)
