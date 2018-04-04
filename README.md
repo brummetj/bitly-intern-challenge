@@ -1,30 +1,31 @@
-Bitly API internship challenge 2018
-Joshua Brummet
+#### Bitly API internship challenge 2018
+
+#### Joshua Brummet
 
 ## Introduction 
 
-For your internship challenge I developed a library that acts as both a Router and Wrapper to both the Bitly API and Twitter API, written in go. With this library you can submit a new tweet with some text. If there is a URL present in your string, it will replace this URL with a bitly link and submit the tweet to your twitter account. 
+For your internship challenge, I developed a library that acts as both a Router and Wrapper to both the Bitly API and Twitter API, written in go. With this library, you can submit a new tweet with some text. If there is a URL present in your string, it will replace this URL with a bitly link and submit the tweet to your twitter account. 
 
 This library was built to make quick responses to twitter with bitly links.
 
-For example.. Lets say someone uses twitter as a marketing tool, and they have items they sell with URI's that you would describe as a 'Deep link'. This library api could make it so someone can quickly market their item as a Bitly link on their twitter account. This person can utilize all the valuable information you guys provide fast and easy with one HTTP request to their own endpoint!! :)
+For example... Let us say someone uses Twitter as a marketing tool, and they have items they sell with URI's that you would describe as a 'Deep link'. This library API could make it so someone can quickly market their item as a Bitly link on their twitter account. This person can utilize all the valuable information you guys provide fast and easy with one HTTP request to their own endpoint!! :)
 
 If there is no URL present in the form value then it will simply just submit a tweet to your account. 
 
-Built upon this functionaliy, this library also includes the following endpoints.
+Built upon this functionality, this library also includes the following endpoints.
 
 * `/v3/user/link_save`
 * `/v3/user/link_history`
 * `/v3/user/clicks`
 
-The twitter enpoints used are 
+The twitter endpoints used are 
 
 * `/1.1/statuses/update.json`
 * `/1.1/account/verify_credentials.json`
 
-In order to use the twitter functionality with the library this will require you to set up quick app and get your user credentials. This will take only take a moment to set up. Just go to this [link](https://apps.twitter.com/)
+In order to use the Twitter functionality with the library, this will require you to set up a quick app and get your user credentials. This will take only take a moment to set up. Just go to this [link](https://apps.twitter.com/)
 
-One you have created your app you will need to get the following tokens
+Once you have created your app you will need to get the following tokens
 
 * `TWITTER_ACCESS_TOKEN`
 * `TWITTER_ACCESS_TOKEN_SECRET` 
@@ -32,7 +33,7 @@ One you have created your app you will need to get the following tokens
 * `TWITTER_CONSUMER_SECRET`
 
 ---
-## How to Run :)
+## How to Run 
 
 To run the library you can either use the folder I have provided with you guys, or simply just use the google go package I created. This package will include all the dependencies so there is no need to install the library dependencies when testing. 
 
@@ -45,7 +46,7 @@ If you decide to use the folder as a package here is a list of dependencies you 
 * `go get -u github.com/kurrik/oauth1a`
 * `go get -u mvdan.cc/xurls`
 
-`mkdir` A new directory, cd inside and lets call our new bitly app.. `app.go`
+`mkdir` A new directory, cd inside and let's call our new bitly app.. `app.go`
 
 ### Authentication 
 
@@ -59,10 +60,10 @@ Inside the `CREDENTIALS.txt` insert the tokens in the following order.
 <TWITTER_ACCESS_TOKEN>
 <TWITTER_ACCESS_TOKEN_SECRET>
 ```
-If you decide to use OS variables just run for each variable in the command line such as..
+If you decide to use OS variables just run for each variable in the command line such as.
 `export TWITTER_CONSUMER_KEY=<YOUR_TOKEN>`
 
-Your folder structer should look like this.
+Your folder structure should look like this.
 
 ```
 -dir
@@ -70,7 +71,7 @@ Your folder structer should look like this.
    -- CREDENTIALS.txt
 ```
 
-For the bitly API I use a exported variable for my credentials to access your API. 
+For the bitly API I use an exported variable for my credentials to access your API. 
 
 Simply in the command line do
 `export BITLY_ACCESS_TOKEN=<YOUR_TOKEN>`
@@ -87,40 +88,40 @@ package main
 import "github.com/brummetj/bitly-intern-challenge"
 
 func main(){
-	
-	r := bitly.NewBitlyRouter("5000")
+    
+    r := bitly.NewBitlyRouter("5000")
 
-	r.GetTwitterCredFile("./CREDENTIALS.txt")
-	 
+    r.GetTwitterCredFile("./CREDENTIALS.txt")
+     
   //r.GetTwitterCredEnv()
   
-	r.VerifyTwitterCred()
-	
-	r.HandleLinkHistory("/link_history")
-	
-	r.HandleLinkSave("/link_save")
-	
-	r.HandleUserClicks("/user_clicks")
-	
-	r.HandleTweetBitlyUpdate("/tweet")
-	
-	r.Listen()
+    r.VerifyTwitterCred()
+    
+    r.HandleLinkHistory("/link_history")
+    
+    r.HandleLinkSave("/link_save")
+    
+    r.HandleUserClicks("/user_clicks")
+    
+    r.HandleTweetBitlyUpdate("/tweet")
+    
+    r.Listen()
 }
 ```
 To Run please type `go run app.go`
 
 You will see a message on which port you running. 
 
-Open up Postman and you can start making requests to your localhost endpoints which will respond from the Bitly and Twitter APi.
+Open up Postman and you can start making requests to your localhost endpoints which will respond to the Bitly and Twitter API.
 
-NOTE: if you plan to you use source code as the your package depedency, make sure you install the listed dependencies. You will also want to include the source code in a dir outside of app.go
+NOTE: if you plan to you use the source code as your package dependency, make sure you install the listed dependencies. You will also want to include the source code in a dir outside of app.go
 ```
 package main
 
 import "../bitly-intern-challenge"
 
 ```
-And the folder structer will look like 
+And the folder structure will look like 
 
 ```
 -dir
@@ -132,7 +133,7 @@ And the folder structer will look like
 
 #### Bitly Router & Listen
 
-The bitly router is built on top of gorilla's Mux package. Declaring `bitly.NewBitlyRouter("5000")` Will instantiate a new router that can be used to declare each hanlder and its end point. This function will take a argument as a port number. This is so you can have multiple local servers running on different ports. 
+The bitly router is built on top of gorilla's Mux package. Declaring `bitly.NewBitlyRouter("5000")` Will instantiate a new router that can be used to declare each handler and its endpoint. This function will take an argument as a port number. This is so you can have multiple local servers running on different ports. 
 
 The BitlyRouter has to always be the first variable declared in order to use each handler
 
@@ -140,19 +141,19 @@ The BitlyRouter has to always be the first variable declared in order to use eac
 
 #### Twitter Creds
 
-`r.GetTwitterCredFile("./CREDENTIALS.txt")` will simply look for the `CREDENTIALS.txt` file in your dir, and authenticate you to twitter to make calls to their API. This function is needed before making and handler endpoints to Twitter. 
+`r.GetTwitterCredFile("./CREDENTIALS.txt")` will simply look for the `CREDENTIALS.txt` file in your dir, and authenticate you to Twitter to make calls to their API. This function is needed before making and handler endpoints to Twitter. 
 
-Alternativly if you can use `r.GetTwitterCredEnv()` if you declare OS variables. 
+alternatively if you can use `r.GetTwitterCredEnv()` if you declare OS variables. 
 
-`r.VerifyTwitterCred()` Will verify if you have successfully connected to twitter or not. 
+`r.VerifyTwitterCred()` Will verify if you have successfully connected to Twitter or not. 
 
 If you don't have a `CREDENTIALS` file in the dir and call `GetTwitterCredFile` you will get a compile error.
 
 ## Handlers
 
-Each handler will take a endpoint, and allow you to make calls to the endpoint depending on the HTTP request. Most of the handlers declared in the library are just GET requests. The twitter / bitly handler is a POST request. They all will respond in JSON.
+Each handler will take an endpoint, and allow you to make calls to the endpoint depending on the HTTP request. Most of the handlers declared in the library are just GET requests. The twitter / bitly handler is a POST request. They all will respond in JSON.
 
-All Tests are used with Postman, feel free to `CURL` or use the web browser for GET requests.
+All Tests are used with Postman, feel free to `CURL` or use the web browser for getting requests.
 
 * `GET Request`
 * `r.HandleLinkHistory("/link_history")`
@@ -260,7 +261,7 @@ Test Response from `HandleUserClicks("/user_clicks")`
 ```
 * `POST Request`
 * `r.HandleTweetBitlyUpdate("/tweets")`
-  * This will retrieve a response from `/1.1/statuses/update.json` in the twitter API.
+  * This will retrieve a response from `/1.1/statuses/update.json` in the Twitter API.
   
 Test Response from `HandleTweetBitlyUpdate("/tweets")`
 
@@ -275,9 +276,9 @@ Test Response from `HandleTweetBitlyUpdate("/tweets")`
     "User": "Joshua Brummet"
 }
 ```
-##### For simplicity purposes, I weeded out most of the twitter response to save time of creating a model for twitters api response.
+##### For simplicity purposes, I weeded out most of the twitter response to save the time of creating a model for twitters API response.
 
-Here screenshot of my twitter account with the new bitly / twitter update ! 
+Here screenshot of my twitter account with the new bitly / twitter update! 
 
 ![alt text](https://github.com/brummetj/bitly-intern-challenge/blob/master/Screen%20Shot%202018-04-03%20at%206.05.28%20PM.png)
 
