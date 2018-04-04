@@ -2,6 +2,8 @@
 
 #### Joshua Brummet
 
+#### Joshua.brummet@ucdenver.edu
+
 ## Introduction 
 
 For your internship challenge, I developed a library that acts as both a Router and Wrapper to both the Bitly API and Twitter API, written in go. With this library, you can submit a new tweet with some text. If there is a URL present in your string, it will replace this URL with a bitly link and submit the tweet to your twitter account. 
@@ -286,3 +288,7 @@ Here screenshot of my twitter account with the new bitly / twitter update!
 ## Conclusion
 
 With this API go wrapper you can quickly submit bitly links to twitter through the API router that I built with your own endpoints! 
+
+Thanks for giving me this opportunity with your summer internship. I hope you enjoy the Library I built for you. Feel free to dive into the source code and ask any questions if needed!
+
+Looking forward to be hearing from you soon. 
