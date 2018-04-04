@@ -14,6 +14,16 @@ For example... Let us say someone uses Twitter as a marketing tool, and they hav
 
 If there is no URL present in the form value then it will simply just submit a tweet to your account. 
 
+I went with a MVC designed structured API. But since there is no views, and this is technically a library you can use built around several other packages. 
+
+I designed it as 
+* The controllers
+   * These handle each request to the APIs
+* The Route handlers
+   * These will determine your API path and call the corresponding controller.
+* The models
+   * These model each response that comes back from the HTTP requests.
+
 Built upon this functionality, this library also includes the following endpoints.
 
 * `/v3/user/link_save`
@@ -35,7 +45,7 @@ Once you have created your app you will need to get the following tokens
 * `TWITTER_CONSUMER_SECRET`
 
 ---
-## How to Run 
+## How to Run :)
 
 To run the library you can either use the folder I have provided with you guys, or simply just use the google go package I created. This package will include all the dependencies so there is no need to install the library dependencies when testing. 
 
