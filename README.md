@@ -135,7 +135,7 @@ And the folder structure will look like
 
 #### Bitly Router & Listen
 
-The bitly router is built on top of gorilla's Mux package. Declaring `bitly.NewBitlyRouter("5000")` Will instantiate a new router that can be used to declare each handler and its endpoint. This function will take an argument as a port number. This is so you can have multiple local servers running on different ports. 
+The bitly router is built on top of gorilla's Mux package. Declaring `bitly.NewBitlyRouter("5000")` Will instantiate a new router that can be used to declare each handler and its endpoint. This function will take an argument as a port number. This is so you can have multiple local servers running on different ports. You can also declare a new router and write any handle  built off this library.
 
 The BitlyRouter has to always be the first variable declared in order to use each handler
 
@@ -190,7 +190,7 @@ Test Response from `HandleLinkHistory("/link_history")`
                 }
             },
 ```
-
+---
 * `GET Request`
 * `Query: longUrl`
 * `r.HandleLinkSave("/link_save")`
@@ -214,6 +214,7 @@ Test Response from `HandleLinkSave("/link_save")`
     "status_txt": "OK"
 }
 ```
+---
 * `GET Request`
 * `r.HandleUserClicks("/user_clicks")`
   * This will retrieve a response from `v3/user/clicks` in the bitly API.
@@ -261,6 +262,7 @@ Test Response from `HandleUserClicks("/user_clicks")`
     "status_txt": "OK"
 }
 ```
+---
 * `POST Request`
 * `r.HandleTweetBitlyUpdate("/tweets")`
   * This will retrieve a response from `/1.1/statuses/update.json` in the Twitter API.
