@@ -78,6 +78,8 @@ For the bitly API I use an exported variable for my credentials to access your A
 Simply in the command line do
 `export BITLY_ACCESS_TOKEN=<YOUR_TOKEN>`
 
+You will get token errors and be unable to run the API without this OS variable. 
+
 This will allow each bitly endpoint to be successful.
 
 ## Using
