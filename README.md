@@ -143,7 +143,7 @@ The BitlyRouter has to always be the first variable declared in order to use eac
 
 `r.GetTwitterCredFile("./CREDENTIALS.txt")` will simply look for the `CREDENTIALS.txt` file in your dir, and authenticate you to Twitter to make calls to their API. This function is needed before making and handler endpoints to Twitter. 
 
-alternatively if you can use `r.GetTwitterCredEnv()` if you declare OS variables. 
+alternatively you can use `r.GetTwitterCredEnv()` if OS variables are declared as above.
 
 `r.VerifyTwitterCred()` Will verify if you have successfully connected to Twitter or not. 
 
