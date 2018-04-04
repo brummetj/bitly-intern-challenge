@@ -60,7 +60,7 @@ Inside the `CREDENTIALS.txt` insert the tokens in the following order.
 <TWITTER_ACCESS_TOKEN>
 <TWITTER_ACCESS_TOKEN_SECRET>
 ```
-If you decide to use OS variables just run for each variable in the command line such as.
+If you decide to use OS variables just run for each variable in the command line such as. Maker sure you use all caps!
 `export TWITTER_CONSUMER_KEY=<YOUR_TOKEN>`
 
 Your folder structure should look like this.
