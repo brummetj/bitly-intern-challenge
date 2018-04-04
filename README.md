@@ -137,7 +137,7 @@ The bitly router is built on top of gorilla's Mux package. Declaring `bitly.NewB
 
 The BitlyRouter has to always be the first variable declared in order to use each handler
 
-`Listen()` is needed at the end of each handler call. This will make the API live and ready to use!! 
+`Listen()` is needed at the end of your func main(). This will make the API live and ready to use!! 
 
 #### Twitter Creds
 
